@@ -4,18 +4,17 @@ import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 export function validarYMostrarSegundaER() {
     var cadena = document.getElementById('cadenaInput2').value.toUpperCase();
 
-    if (cadena.length >= 4 && /^(E|e)[OGFoeogf]{3}$/.test(cadena)) {
-        document.getElementById('resultado2').innerText = cadena + ' - Cadena Valida.';
+    if (cadena.length >= 4 && /^(O|o)[IDMoidm]{3}$/.test(cadena)) {
+        document.getElementById('resultado2').innerText = cadena + ' -> Cadena Valida.';
         generarAutomataSegundaER(cadena);
     } else {
-        document.getElementById('resultado2').innerText = cadena + ' - Cadena no valida. No se hace.';
-        d3.select(".er2 svg").remove();
+        document.getElementById('resultado2').innerText = cadena + ' -> Cadena no valida.';
+        d3.select(".er svg").remove();
     }
 }
 
 export function generarAutomataSegundaER(cadena) {
-    d3.select(".er2 svg").remove(); // Elimina el SVG existente
-
+    d3.select(".er svg").remove();
     // Datos del automata
     var estados = [];
     var transiciones = [];
@@ -32,8 +31,8 @@ export function generarAutomataSegundaER(cadena) {
     }
 
     // Crear el contenedor SVG
-    var svg = d3.select(".er2").append("svg")
-        .attr("width", 1000) // Aumentar el ancho para mejorar la visualización
+    var svg = d3.select(".er").append("svg")
+        .attr("width", 600) // Aumentar el ancho para mejorar la visualización
         .attr("height", 150); // Aumentar la altura para mejorar la visualización
 
     // Crear nodos (estados)
